@@ -1,38 +1,577 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Filip Major's portfolio</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,459;1,459&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f4ec">
+  <meta name="description" content="Wedding details for Alex and Jamie.">
+  <title>Alex & Jamie — Our Wedding</title>
+
+  <!-- Tailwind CSS CDN: convenient for a prototype -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: "#f8f4ec",
+            ink: "#29271f",
+            forest: "#43563b",
+            sage: "#e7eadf"
+          },
+          fontFamily: {
+            display: ["Georgia", "Times New Roman", "serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 6rem;
+    }
+
+    body {
+      background: #f8f4ec;
+      color: #29271f;
+    }
+
+    :focus-visible {
+      outline: 3px solid #43563b;
+      outline-offset: 4px;
+    }
+
+    .hero-overlay {
+      background: linear-gradient(
+        90deg,
+        rgba(25, 28, 21, .72),
+        rgba(25, 28, 21, .40) 55%,
+        rgba(25, 28, 21, .08)
+      );
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
-<body>
-    <div class="header-box">
-        <div class="navbar-container">
-            <nav>
-                <div class="navbar-items">
-                    <ul class="navbar-list">
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="skills.html">Skills</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-            </nav>
+
+<body class="font-sans antialiased">
+
+  <!-- Skip link for keyboard and screen-reader users -->
+  <a href="#main"
+     class="sr-only focus:not-sr-only focus:fixed focus:left-4
+            focus:top-4 focus:z-50 focus:bg-white focus:p-4">
+    Skip to main content
+  </a>
+
+  <!-- Navigation -->
+  <header class="sticky top-0 z-40 border-b border-black/10
+                 bg-paper/95 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center
+                justify-between px-5 py-4 sm:px-8">
+
+      <a href="#home"
+         class="font-display text-2xl tracking-tight sm:text-3xl"
+         aria-label="Alex and Jamie, home">
+        Alex <span class="text-forest">&</span> Jamie
+      </a>
+
+      <button id="menu-button"
+              type="button"
+              class="min-h-11 min-w-11 rounded-lg border
+                     border-ink/20 px-3 py-2 font-semibold md:hidden"
+              aria-expanded="false"
+              aria-controls="primary-navigation">
+        <span id="menu-label">Menu</span>
+      </button>
+
+      <nav id="primary-navigation"
+           aria-label="Main navigation"
+           class="hidden absolute left-0 right-0 top-full
+                  border-b border-black/10 bg-paper p-5 shadow-lg
+                  md:static md:block md:border-0 md:bg-transparent
+                  md:p-0 md:shadow-none">
+
+        <ul class="flex flex-col gap-1 md:flex-row
+                   md:items-center md:gap-7">
+          <li><a class="block rounded py-3 hover:text-forest"
+                 href="#the-day">The Day</a></li>
+          <li><a class="block rounded py-3 hover:text-forest"
+                 href="#location">Location</a></li>
+          <li><a class="block rounded py-3 hover:text-forest"
+                 href="#good-to-know">Good to Know</a></li>
+          <li><a class="block rounded py-3 hover:text-forest"
+                 href="#travel">Travel & Stay</a></li>
+          <li class="pt-2 md:pt-0">
+            <a href="#rsvp"
+               class="inline-flex min-h-11 items-center justify-center
+                      rounded-full bg-forest px-6 py-3
+                      font-semibold text-white hover:bg-[#34452e]">
+              RSVP
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section id="home"
+             class="relative isolate flex min-h-[75vh]
+                    items-center overflow-hidden bg-stone-700">
+
+      <img
+        src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=85"
+        alt="A couple celebrating their wedding"
+        class="absolute inset-0 -z-20 h-full w-full object-cover"
+        fetchpriority="high">
+
+      <div class="hero-overlay absolute inset-0 -z-10"></div>
+
+      <div class="mx-auto w-full max-w-7xl px-6 py-24 sm:px-8">
+        <div class="max-w-2xl text-white">
+
+          <p class="mb-4 text-sm font-semibold uppercase
+                    tracking-[.25em]">
+            Together with our families
+          </p>
+
+          <h1 class="font-display text-5xl leading-tight
+                     tracking-tight sm:text-7xl lg:text-8xl">
+            Alex <span class="text-sage">&</span> Jamie
+          </h1>
+
+          <p class="mt-5 text-lg uppercase tracking-[.18em] sm:text-xl">
+            We're getting married!
+          </p>
+
+          <div class="my-7 h-px w-24 bg-white/70"></div>
+
+          <p class="text-lg sm:text-xl">
+            Saturday, 14 June 2027
+          </p>
+          <p class="mt-2 text-lg sm:text-xl">
+            The Garden Pavilion · Bristol
+          </p>
+
+          <a href="#rsvp"
+             class="mt-8 inline-flex min-h-12 items-center
+                    rounded-full bg-paper px-7 py-3
+                    font-semibold text-ink hover:bg-white">
+            Kindly RSVP <span aria-hidden="true" class="ml-3">→</span>
+          </a>
         </div>
-    </div>
-    <div class="content-box">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in
-        fringilla nisi. Donec consectetur varius ex id fermentum. Integer
-        rutrum arcu ac nunc euismod feugiat. Nullam vel consectetur justo.
-        Nullam sed ligula id sem ullamcorper molestie. Nulla congue venenatis
-        leo id semper. Proin ipsum turpis, tincidunt in fermentum at, varius eu
-        justo. Donec id lacus tristique, vestibulum tortor feugiat, feugiat
-        tellus. Praesent vel lacinia magna, lobortis tempor felis. Curabitur
-        nulla mi, auctor a fermentum et, elementum vitae leo. Lorem ipsum dolor
-        sit amet, consectetur adipiscing elit. Sed ut justo vitae sem tempus
-        molestie.
-    </div>
+      </div>
+    </section>
+
+    <!-- Quick navigation cards -->
+    <section aria-label="Explore the wedding website"
+             class="mx-auto grid max-w-7xl gap-3 px-5 py-8
+                    sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
+
+      <a href="#the-day"
+         class="rounded-2xl border border-ink/10 bg-white/60
+                p-5 shadow-sm transition hover:bg-white">
+        <span class="text-sm font-semibold text-forest">01</span>
+        <h2 class="mt-3 font-display text-2xl">The Day</h2>
+        <p class="mt-2 text-sm text-ink/70">Schedule and timings</p>
+        <span class="mt-4 inline-block text-forest">Explore →</span>
+      </a>
+
+      <a href="#location"
+         class="rounded-2xl border border-ink/10 bg-white/60
+                p-5 shadow-sm transition hover:bg-white">
+        <span class="text-sm font-semibold text-forest">02</span>
+        <h2 class="mt-3 font-display text-2xl">Location</h2>
+        <p class="mt-2 text-sm text-ink/70">Venue and directions</p>
+        <span class="mt-4 inline-block text-forest">Explore →</span>
+      </a>
+
+      <a href="#good-to-know"
+         class="rounded-2xl border border-ink/10 bg-white/60
+                p-5 shadow-sm transition hover:bg-white">
+        <span class="text-sm font-semibold text-forest">03</span>
+        <h2 class="mt-3 font-display text-2xl">Good to Know</h2>
+        <p class="mt-2 text-sm text-ink/70">Dress code and FAQs</p>
+        <span class="mt-4 inline-block text-forest">Explore →</span>
+      </a>
+
+      <a href="#travel"
+         class="rounded-2xl border border-ink/10 bg-white/60
+                p-5 shadow-sm transition hover:bg-white">
+        <span class="text-sm font-semibold text-forest">04</span>
+        <h2 class="mt-3 font-display text-2xl">Travel & Stay</h2>
+        <p class="mt-2 text-sm text-ink/70">Hotels and transport</p>
+        <span class="mt-4 inline-block text-forest">Explore →</span>
+      </a>
+    </section>
+
+    <!-- Our story -->
+    <section class="mx-auto grid max-w-7xl items-center gap-10
+                    px-5 py-14 sm:px-8 md:grid-cols-2 md:gap-16">
+
+      <img
+        src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=85"
+        alt="A couple sharing a happy moment together"
+        loading="lazy"
+        class="h-72 w-full rounded-2xl object-cover sm:h-96">
+
+      <div>
+        <p class="text-sm font-semibold uppercase
+                  tracking-[.2em] text-forest">
+          A little about us
+        </p>
+
+        <h2 class="mt-3 font-display text-4xl sm:text-5xl">
+          Our Story
+        </h2>
+
+        <p class="mt-6 text-lg leading-8 text-ink/80">
+          From a chance meeting to a lifetime together, our
+          journey has been full of laughter, adventure, and
+          so much love. We can’t wait to celebrate this next
+          chapter with you.
+        </p>
+
+        <p class="mt-5 font-display text-xl italic text-forest">
+          With love, Alex & Jamie
+        </p>
+      </div>
+    </section>
+
+    <!-- Schedule -->
+    <section id="the-day"
+             class="scroll-mt-24 bg-sage/60">
+      <div class="mx-auto grid max-w-7xl gap-10 px-5 py-14
+                  sm:px-8 md:grid-cols-2 md:items-center">
+
+        <div>
+          <p class="text-sm font-semibold uppercase
+                    tracking-[.2em] text-forest">
+            Save the timings
+          </p>
+
+          <h2 class="mt-3 font-display text-4xl sm:text-5xl">
+            The Day
+          </h2>
+
+          <p class="mt-4 leading-7 text-ink/75">
+            Here’s the plan, so you can relax and enjoy every moment.
+          </p>
+
+          <ol class="mt-8 space-y-6 border-l-2
+                     border-forest/30 pl-6">
+
+            <li class="relative">
+              <span class="absolute -left-[1.95rem] top-2
+                           h-3 w-3 rounded-full bg-forest"></span>
+              <p><strong>2:00 PM</strong> — Guest arrival and drinks</p>
+            </li>
+
+            <li class="relative">
+              <span class="absolute -left-[1.95rem] top-2
+                           h-3 w-3 rounded-full bg-forest"></span>
+              <p><strong>3:00 PM</strong> — Ceremony</p>
+            </li>
+
+            <li class="relative">
+              <span class="absolute -left-[1.95rem] top-2
+                           h-3 w-3 rounded-full bg-forest"></span>
+              <p><strong>4:00 PM</strong> — Canapés and photos</p>
+            </li>
+
+            <li class="relative">
+              <span class="absolute -left-[1.95rem] top-2
+                           h-3 w-3 rounded-full bg-forest"></span>
+              <p><strong>6:00 PM</strong> — Dinner</p>
+            </li>
+
+            <li class="relative">
+              <span class="absolute -left-[1.95rem] top-2
+                           h-3 w-3 rounded-full bg-forest"></span>
+              <p><strong>8:00 PM</strong> — Dancing!</p>
+            </li>
+
+          </ol>
+        </div>
+
+        <img
+          src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85"
+          alt="A beautifully decorated wedding reception"
+          loading="lazy"
+          class="h-72 w-full rounded-2xl object-cover sm:h-96">
+      </div>
+    </section>
+
+    <!-- Venue -->
+    <section id="location"
+             class="scroll-mt-24 mx-auto grid max-w-7xl
+                    gap-8 px-5 py-14 sm:px-8
+                    md:grid-cols-2 md:items-center">
+
+      <div class="flex min-h-64 items-center justify-center
+                  rounded-2xl bg-sage p-8 text-center">
+        <div>
+          <span class="text-4xl text-forest" aria-hidden="true">⌖</span>
+          <p class="mt-3 font-display text-2xl">
+            The Garden Pavilion
+          </p>
+          <p class="mt-2 text-sm text-ink/70">
+            Bristol, United Kingdom
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-sm font-semibold uppercase
+                  tracking-[.2em] text-forest">
+          Meet us here
+        </p>
+
+        <h2 class="mt-3 font-display text-4xl sm:text-5xl">
+          Location
+        </h2>
+
+        <p class="mt-5 text-lg font-semibold">
+          The Garden Pavilion
+        </p>
+        <p class="mt-1 leading-7 text-ink/75">
+          123 Green Lane<br>
+          Bristol BS1 2AB
+        </p>
+
+        <p class="mt-4 leading-7 text-ink/75">
+          Please allow a little extra time for your journey.
+          We look forward to welcoming you.
+        </p>
+
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=The+Garden+Pavilion+Bristol"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-6 inline-flex min-h-12 items-center
+                 rounded-full bg-forest px-6 py-3
+                 font-semibold text-white hover:bg-[#34452e]">
+          Get directions <span aria-hidden="true" class="ml-3">↗</span>
+          <span class="sr-only">(opens in a new tab)</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Travel -->
+    <section id="travel"
+             class="scroll-mt-24 bg-white/50">
+      <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8">
+
+        <p class="text-sm font-semibold uppercase
+                  tracking-[.2em] text-forest">
+          Make a weekend of it
+        </p>
+
+        <h2 class="mt-3 font-display text-4xl sm:text-5xl">
+          Travel & Stay
+        </h2>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+
+          <article class="rounded-2xl border border-ink/10
+                          bg-paper p-6">
+            <h3 class="font-display text-2xl">By Train</h3>
+            <p class="mt-3 leading-7 text-ink/75">
+              The nearest major station is Bristol Temple Meads.
+              Taxis and local buses are available from there.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-ink/10
+                          bg-paper p-6">
+            <h3 class="font-display text-2xl">By Car</h3>
+            <p class="mt-3 leading-7 text-ink/75">
+              Add parking information here, including whether
+              spaces need to be reserved in advance.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-ink/10
+                          bg-paper p-6">
+            <h3 class="font-display text-2xl">Where to Stay</h3>
+            <p class="mt-3 leading-7 text-ink/75">
+              Add nearby hotel recommendations, booking links,
+              and any group rates here.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section id="good-to-know"
+             class="scroll-mt-24 mx-auto max-w-4xl
+                    px-5 py-14 sm:px-8">
+
+      <p class="text-center text-sm font-semibold uppercase
+                tracking-[.2em] text-forest">
+        The little details
+      </p>
+
+      <h2 class="mt-3 text-center font-display text-4xl sm:text-5xl">
+        Good to Know
+      </h2>
+
+      <div class="mt-8 space-y-3">
+
+        <details class="group rounded-xl border border-ink/10
+                        bg-white/60 p-5">
+          <summary class="flex min-h-8 cursor-pointer
+                          items-center justify-between gap-4 font-semibold">
+            What should I wear?
+            <span class="text-xl text-forest" aria-hidden="true">+</span>
+          </summary>
+          <p class="mt-3 leading-7 text-ink/75">
+            Our dress code is [add dress code]. Some parts of
+            the celebration may be outdoors, so please dress
+            for the weather.
+          </p>
+        </details>
+
+        <details class="group rounded-xl border border-ink/10
+                        bg-white/60 p-5">
+          <summary class="flex min-h-8 cursor-pointer
+                          items-center justify-between gap-4 font-semibold">
+            Is parking available?
+            <span class="text-xl text-forest" aria-hidden="true">+</span>
+          </summary>
+          <p class="mt-3 leading-7 text-ink/75">
+            [Add parking, drop-off, and accessibility details.]
+          </p>
+        </details>
+
+        <details class="group rounded-xl border border-ink/10
+                        bg-white/60 p-5">
+          <summary class="flex min-h-8 cursor-pointer
+                          items-center justify-between gap-4 font-semibold">
+            Can I bring a plus-one?
+            <span class="text-xl text-forest" aria-hidden="true">+</span>
+          </summary>
+          <p class="mt-3 leading-7 text-ink/75">
+            Please check your invitation for the guests included
+            in your RSVP. If you're unsure, contact us.
+          </p>
+        </details>
+
+        <details class="group rounded-xl border border-ink/10
+                        bg-white/60 p-5">
+          <summary class="flex min-h-8 cursor-pointer
+                          items-center justify-between gap-4 font-semibold">
+            How do I share dietary requirements?
+            <span class="text-xl text-forest" aria-hidden="true">+</span>
+          </summary>
+          <p class="mt-3 leading-7 text-ink/75">
+            Please include dietary requirements when you RSVP,
+            or contact us at [your email address].
+          </p>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp"
+             class="scroll-mt-24 bg-forest px-5 py-16
+                    text-center text-white sm:px-8">
+
+      <p class="text-sm font-semibold uppercase
+                tracking-[.2em] text-white/75">
+        We hope you can make it
+      </p>
+
+      <h2 class="mt-3 font-display text-4xl sm:text-5xl">
+        Will You Join Us?
+      </h2>
+
+      <p class="mx-auto mt-4 max-w-xl leading-7 text-white/85">
+        Please let us know by 1 May 2027.
+        We can't wait to celebrate with you.
+      </p>
+
+      <!-- Replace with your real RSVP form URL or email -->
+      <a href="mailto:hello@example.com?subject=Wedding%20RSVP"
+         class="mt-7 inline-flex min-h-12 items-center
+                rounded-full bg-paper px-7 py-3
+                font-semibold text-ink hover:bg-white">
+        RSVP by email <span aria-hidden="true" class="ml-3">→</span>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="px-5 py-8 text-center">
+    <a href="#home" class="font-display text-2xl">
+      Alex <span class="text-forest">&</span> Jamie
+    </a>
+
+    <p class="mt-2 text-sm text-ink/70">
+      14 June 2027 · Bristol
+    </p>
+
+    <a href="#main"
+       class="mt-5 inline-block rounded px-3 py-2
+              text-sm underline underline-offset-4 hover:text-forest">
+      Back to top
+    </a>
+  </footer>
+
+  <!-- Mobile navigation behaviour -->
+  <script>
+    const menuButton = document.getElementById("menu-button");
+    const menuLabel = document.getElementById("menu-label");
+    const navigation = document.getElementById("primary-navigation");
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+
+    function closeMenu() {
+      if (mobileQuery.matches) {
+        navigation.classList.add("hidden");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuLabel.textContent = "Menu";
+      }
+    }
+
+    menuButton.addEventListener("click", () => {
+      const isOpen =
+        menuButton.getAttribute("aria-expanded") === "true";
+
+      navigation.classList.toggle("hidden", isOpen);
+      menuButton.setAttribute("aria-expanded", String(!isOpen));
+      menuLabel.textContent = isOpen ? "Menu" : "Close";
+    });
+
+    navigation.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    mobileQuery.addEventListener("change", event => {
+      if (event.matches) {
+        navigation.classList.add("hidden");
+      } else {
+        navigation.classList.remove("hidden");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuLabel.textContent = "Menu";
+      }
+    });
+  </script>
+
 </body>
 </html>
+
